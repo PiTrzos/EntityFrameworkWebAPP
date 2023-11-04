@@ -1,0 +1,159 @@
+﻿@page "/cats/{breedName}"
+@using CatWebApp.Services;
+@inject ICatService _catService
+@if (cat != null)
+{
+    <PageTitle>@cat.BreedName</PageTitle>
+        <section class="section about-section" id="about">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-6">
+                        <div class="about-text go-to">
+                        <h3 class="dark-color">@cat.BreedName</h3>
+                        <h6 class="theme-color lead">@cat.BreedType.Name</h6>
+                            <p>@cat.Description</p>
+                            <div class="row about-list">
+                                @if (cat.ActivityLevel!= null)
+                                {
+                                    <div class="col-md-6">
+                                        <div class="media">
+                                        <label>Playfulness</label>
+                                            <p>@cat.Playfulness</p>
+                                        </div>
+                                        <div class="media">
+                                        <label>Tendency To Vocalize</label>
+                                            <p>@cat.TendencyToVocalize</p>
+                                        </div>
+                                        <div class="media">
+                                            <label>Life Span</label>
+                                            <p>@cat.LifeSpan</p>
+                                        </div>
+                                        <div class="media">
+                                        <label>Activity Level</label>
+                                            <p>@cat.ActivityLevel</p>
+                                        </div>
+                                        <div class="media">
+                                            <label>Shedding Ammount</label>
+                                            <p>@cat.SheddingAmmount</p>
+                                        </div>
+                                    </div>
+                                }
+                            
+
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>Origin</label>
+                                        <p>@cat.Origin</p>
+                                    </div>
+                                    @if (cat.AffectionLevel != null)
+                                    {
+                                     <div class="media">
+                                        <label>Affection Level</label>
+                                        <p>@cat.AffectionLevel</p>
+                                     </div> 
+                                    }    
+                                    
+                                    <div class="media">
+                                    <label>Coat Length</label>
+                                        <p>@cat.CoatLength</p>
+                                    </div>
+                                    <div class="media">
+                                    <label>Coat Pattern</label>
+                                        <p>@cat.CoatPattern</p>
+                                    </div>
+                                   
+                                    @if (cat.AffectionLevel != null)
+                                    {
+                                    <div class="media">
+                                        <label>Good With</label>
+                                        <p>@cat.GoodWith</p>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-avatar">
+                            <img src="@cat.ImgSrc" title="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="counter">
+                    @if (cat.MainCharacteristics.Length > 0)
+                    {
+                        <div class="row no-list-row">
+                            <h3 class="dark-color row-h3">Main Characteristics</h3>
+                            <p class="theme-color lead">@cat.MainCharacteristics</p>
+                        </div>
+                    }
+
+                    @if (cat.PersonalityTraitsDescription.Length > 0)
+                    {
+                        <div class="row no-list-row">
+                            <h3 class="dark-color row-h3">Personality Traits</h3>
+                            <p class="theme-color lead">@cat.PersonalityTraitsDescription</p>
+                        </div>
+                    }
+
+                    @if (cat.OriginDescription.Length > 0)
+                    {
+                        <div class="row no-list-row">
+                            <h3 class="dark-color row-h3">Origin</h3>
+                            <p class="theme-color lead">@cat.OriginDescription</p>
+                        </div>
+                    }
+
+                    @if (cat.HealthIssues.Count > 0)
+                    {
+                    <div class="row">
+                      <h3 class="dark-color row-h3">Common Breed Issues</h3>
+                    <p class="theme-color lead">@cat.CommonBreedIssues</p>
+                    <ol class="gradient-list">
+                    @foreach(var issue in cat.HealthIssues)
+                    {
+                                <li>
+                                    @issue.Description
+                                </li>
+                    }
+                    </ol>
+
+                    </div>  
+                    }
+                  
+                    @if (cat.FunFacts.Count > 0)
+                    {
+                        <div class="row">
+                            <h3 class="dark-color row-h3">Fun Facts</h3>
+                            <ol class="gradient-list">
+                                @foreach (var fact in cat.FunFacts)
+                                {
+                                    <li>
+                                        @fact.Description
+                                    </li>
+                                }
+                            </ol>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    
+    
+}
+else
+{
+    <p>Loading...</p>
+}
+
+
+
+@code {
+    [Parameter]
+    public string breedName { get; set; }
+    private Cat cat;
+    protected override async Task OnInitializedAsync()
+    {
+        cat = await _catService.GetCat(breedName.Replace("-"," "));
+    }
+}

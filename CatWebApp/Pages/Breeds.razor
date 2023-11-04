@@ -1,0 +1,38 @@
+﻿@page "/breeds"
+@using CatWebApp.Services;
+@inject NavigationManager NavigationManager
+
+@inject ICatService _catService
+
+<PageTitle>Breeds</PageTitle>
+
+<h3 class="h1-class dark-color page-title">Breeds</h3>
+@if (breeds != null)
+{
+    <ol class="gradient-list">
+    @foreach (var breed in breeds)
+    {
+            <li @onclick="()=>OpenDetails(breed.Name)">
+                @breed.Name
+            </li>
+    }
+    </ol>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+
+
+@code {
+    private IEnumerable<BreedType> breeds;
+    protected override async Task OnInitializedAsync()
+    {
+        breeds = await _catService.GetBreeds();
+    }
+    private void OpenDetails(string breedName)
+    {
+        NavigationManager.NavigateTo($"/breeds/{breedName.Replace(" ","-").ToLower()}");
+    }
+}

@@ -1,0 +1,22 @@
+﻿@page "/"
+@using CatWebApp.Services;
+@using CatWebApp.Models;
+@inject ICatService _catService
+
+<PageTitle>Index</PageTitle>
+<h3 class="h1-class dark-color page-title">Random Cat</h3>
+<div class="article-class article-single">
+    @if (cat != null)
+    {
+        <CardComponent cat="@cat"></CardComponent>
+    }
+</div>
+
+@code {
+
+    private Cat cat;
+    protected override async Task OnInitializedAsync()
+    {
+        cat = await _catService.GetRandomCat();
+    }
+}

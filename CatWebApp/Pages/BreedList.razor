@@ -1,0 +1,41 @@
+﻿@page "/breeds/{breedName}"
+@using CatWebApp.Services;
+@using CatWebApp.Models;
+@inject ICatService _catService
+@inject NavigationManager NavigationManager
+
+
+
+
+    @if (cats != null)
+    {
+        <PageTitle>@cats.FirstOrDefault()!.BreedType.Name</PageTitle>
+         <h3 class="h1-class dark-color page-title">@cats.FirstOrDefault()!.BreedType.Name</h3>
+
+    <div class="article-class">
+        @foreach (var cat in cats)
+        {
+            <CardComponent cat="@cat"></CardComponent>
+        }
+    </div>
+    }
+    else
+    {
+        <p>Loading...</p>
+    }
+
+
+
+@code {
+    [Parameter]
+    public string breedName { get; set; }
+    private IEnumerable<Cat> cats;
+    protected override async Task OnInitializedAsync()
+    {
+        cats = await _catService.GetCats(breedName);
+    }
+    private void OpenCat(string breedName)
+    {
+        NavigationManager.NavigateTo($"/cats/{breedName.Replace(" ","-").ToLower()}");
+    }
+}

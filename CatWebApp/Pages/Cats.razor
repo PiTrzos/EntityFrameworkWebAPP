@@ -1,0 +1,33 @@
+﻿@page "/cats"
+@using CatWebApp.Services;
+
+
+@inject ICatService _catService
+
+<PageTitle>Cats</PageTitle>
+
+<h3 class="h1-class dark-color page-title">Cats</h3>
+<div class="article-class">
+    @if (cats != null)
+    {
+        foreach (var cat in cats)
+        {
+            <CardComponent cat="@cat"></CardComponent>
+        }
+    }
+    else
+    {
+        <p>Loading...</p>
+    }
+</div>
+
+
+
+
+@code {
+    private IEnumerable<Cat> cats;
+    protected override async Task OnInitializedAsync()
+    {
+        cats = await _catService.GetCats();
+    }
+}

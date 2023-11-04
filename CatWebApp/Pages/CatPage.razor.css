@@ -1,0 +1,172 @@
+﻿
+ol.gradient-list > li::before, ol.gradient-list > li {
+    box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+}
+
+/*** STYLE ***/
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: block;
+    margin: 0 auto;
+    max-width: 40rem;
+    padding: 1rem;
+}
+
+body {
+    background-color: #fafafa;
+    color: #1d1f20;
+}
+
+ol.gradient-list {
+    counter-reset: gradient-counter;
+    list-style: none;
+    margin: 1.75rem 0;
+    padding-left: 1rem;
+}
+
+    ol.gradient-list > li {
+        background: white;
+        border-radius: 0 0.5rem 0.5rem 0.5rem;
+        counter-increment: gradient-counter;
+        margin-top: 1rem;
+        min-height: 3rem;
+        padding: 1rem 1rem 1rem 3rem;
+        position: relative;
+    }
+
+        ol.gradient-list > li::before, ol.gradient-list > li::after {
+            background-image: linear-gradient(90deg, rgb(121, 117, 243) 0%, #00e8b2 80%) !important;
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            border-radius: 1rem 1rem 0 1rem;
+            content: "";
+            height: 3rem;
+            left: -1rem;
+            overflow: hidden;
+            position: absolute;
+            top: -1rem;
+            width: 3rem;
+        }
+
+        ol.gradient-list > li::before {
+            align-items: flex-end;
+            content: counter(gradient-counter);
+            color: #1d1f20;
+            display: flex;
+            font: 900 1.5em/1 "Montserrat";
+            justify-content: flex-end;
+            padding: 0.125em 0.25em;
+            z-index: 1;
+        }
+
+        ol.gradient-list > li + li {
+            margin-top: 2rem;
+        }
+
+
+.section {
+    padding: 100px 0;
+    position: relative;
+    border-radius: 12px;
+}
+
+.gray-bg {
+    background-color: #f5f5f5;
+}
+
+img {
+    max-width: 100%;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+/* About Me 
+---------------------*/
+.about-text h3 {
+    font-size: 45px;
+    font-weight: 700;
+    margin: 0 0 6px;
+}
+
+.about-text h6 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.about-list {
+    padding-top: 10px;
+}
+.row-h3 {
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+    .about-list .media {
+        padding: 5px 0;
+    }
+
+    .about-list label {
+        background-image: linear-gradient(90deg, rgb(121, 117, 243) 0%, #00e8b2 80%) !important;
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        width: 88px;
+        margin: 0;
+        position: relative;
+    }
+
+
+    .about-list p {
+        margin: 0;
+        font-size: 15px;
+    }
+
+
+.about-section .counter {
+    padding: 22px 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+}
+
+mark {
+    background-image: linear-gradient(rgba(252, 83, 86, 0.6), rgba(252, 83, 86, 0.6));
+    background-size: 100% 3px;
+    background-repeat: no-repeat;
+    background-position: 0 bottom;
+    background-color: transparent;
+    padding: 0;
+    color: currentColor;
+}
+
+.theme-color {
+    color: #808080;
+}
+
+
+p {
+    font-size: 15px;
+    color: #808080;
+}
+.no-list-row{
+    margin-bottom:15px;
+}
+.row {
+    box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 12px;
+}
