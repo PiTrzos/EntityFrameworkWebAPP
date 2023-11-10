@@ -1,9 +1,9 @@
-Cat Web Application - C# Entity Framework
+# Cat Web Application - C# Entity Framework
 
 Welcome to the Cat Web Application repository! This web application is built in C# using Entity Framework and provides a delightful experience for cat enthusiasts. The application features three main sites: Home (which displays a random cat), 
 Breeds (showcasing cat breeds), and Cats (providing a list of all available cats). The data is stored in an MSSQL database. Please note that images are not provided in this repository.
 
-Prerequisites
+# Prerequisites
 
 Before you can run the Cat Web Application, ensure that you have the following prerequisites installed:
 
@@ -11,7 +11,7 @@ Before you can run the Cat Web Application, ensure that you have the following p
     SQL Server - Required for the MSSQL database.
     Entity Framework - Entity Framework is used for database operations.
 
-Installation
+# Installation
  Clone this repository to your local machine:
 
     git clone https://github.com/your-username/cat-web-app.git
@@ -19,7 +19,7 @@ Installation
  Open the project in Visual Studio.
  Restore NuGet packages if necessary.
 
-Database Setup
+# Database Setup
 
 The database schema and initial data are managed in a separate repository:
 
@@ -27,7 +27,7 @@ The database schema and initial data are managed in a separate repository:
 
 Make sure to follow the instructions in the webScraper repository to set up the database and populate it with data.
 
-Running the Application
+# Running the Application
 
 To run the Cat Web Application, follow these steps:
 
@@ -37,7 +37,7 @@ To run the Cat Web Application, follow these steps:
 
     The application will start, and you can access it in your web browser at http://localhost:5018.
 
-Accessing the Sites
+# Accessing the Sites
 
 The Cat Web Application provides the following main sites:
 Home: Displays a random cat.
